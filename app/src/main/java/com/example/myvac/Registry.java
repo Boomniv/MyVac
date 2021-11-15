@@ -1,11 +1,14 @@
 package com.example.myvac;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -96,5 +99,20 @@ public class Registry extends AppCompatActivity {
         etMail.setText("");
 
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemID=item.getItemId();
+
+        if (itemID==R.id.back)
+        {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -47,8 +47,16 @@ public class Login extends AppCompatActivity {
         password = etPassword.getText().toString();
         if(checkUser())
         {
+            sqdb=my_db.getWritableDatabase();
+            Cursor c = sqdb.query(DBHelper.TABLE_NAME,null,null,null,null,null,null);
+            String s1 = c.getString(c.getColumnIndex(DBHelper.FIRST_NAME));
+            String s2 = c.getString(c.getColumnIndex(DBHelper.LAST_NAME));
             Intent i = new Intent(this,menu_screen.class);
+            i.putExtra("first_name", s1);
+            i.putExtra("last_name", s2);
             startActivity(i);
+            sqdb.close();
+
         }
         else
         {

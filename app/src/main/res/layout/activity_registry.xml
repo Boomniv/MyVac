@@ -7,6 +7,7 @@
     android:background="@drawable/back_blue1"
     tools:context=".Registry">
 
+
     <EditText
         android:id="@+id/etConfirmPassword"
         android:layout_width="wrap_content"
@@ -14,14 +15,12 @@
         android:ems="10"
         android:hint="Confirm Password"
         android:inputType="textPassword"
+        app:="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
-
-
+        app:layout_constraintVertical_bias="0.529" />
 
     <EditText
         android:id="@+id/etLastName"

@@ -2,18 +2,13 @@ package com.example.myvac;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class add_child extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Intent i = new Intent(this,Login.class);
-        startActivity(i);
+        setContentView(R.layout.activity_add_child);
     }
-
 }
