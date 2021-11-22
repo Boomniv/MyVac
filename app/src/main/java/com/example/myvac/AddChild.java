@@ -6,19 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-public class menu_screen extends AppCompatActivity {
+public class AddChild extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_screen);
+        setContentView(R.layout.activity_add_child);
     }
 
-    public void goToAddChild(View view) {
-
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
@@ -35,4 +31,6 @@ public class menu_screen extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
