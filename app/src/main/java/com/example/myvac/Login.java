@@ -18,6 +18,7 @@ public class Login extends AppCompatActivity {
 
     EditText etId, etPassword;
     String id="", password="";
+    String first_name="", last_name="";
     SQLiteDatabase sqdb;
     DBHelper my_db;
     Boolean flag = false;
@@ -47,13 +48,9 @@ public class Login extends AppCompatActivity {
         password = etPassword.getText().toString();
         if(checkUser())
         {
-            sqdb=my_db.getWritableDatabase();
-            Cursor c = sqdb.query(DBHelper.TABLE_NAME,null,null,null,null,null,null);
-            String s1 = c.getString(c.getColumnIndex(DBHelper.FIRST_NAME));
-            String s2 = c.getString(c.getColumnIndex(DBHelper.LAST_NAME));
             Intent i = new Intent(this,menu_screen.class);
-            i.putExtra("first_name", s1);
-            i.putExtra("last_name", s2);
+            i.putExtra("first_name", first_name);
+            i.putExtra("last_name", last_name);
             startActivity(i);
             sqdb.close();
         }
@@ -86,6 +83,8 @@ public class Login extends AppCompatActivity {
         boolean flag = false;
         int col1 = c.getColumnIndex(DBHelper.ID);
         int col2 = c.getColumnIndex(DBHelper.PASS);
+        int col3 = c.getColumnIndex(DBHelper.FIRST_NAME);
+        int col4 = c.getColumnIndex(DBHelper.LAST_NAME);
 
 
         c.moveToFirst();
@@ -95,6 +94,8 @@ public class Login extends AppCompatActivity {
             String s2 = c.getString(col2);
             if (id.equals(s1)&&password.equals(s2))
             {
+                first_name =c.getString(col3);
+                last_name =c.getString(col4);
                 return true;
             }
 

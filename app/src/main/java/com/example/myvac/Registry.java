@@ -66,10 +66,12 @@ public class Registry extends AppCompatActivity {
                 flag=false;
                 Toast.makeText(this, "User already exists!", Toast.LENGTH_SHORT).show();
             }
-            if (info[3].equals(info[4]))
+            if (!info[3].equals(info[4]))
             {
                 flag=false;
                 Toast.makeText(this, "Passwords does not match!", Toast.LENGTH_SHORT).show();
+                etPass.setText("");
+                etConPass.setText("");
             }
 
             c.moveToNext();
@@ -88,15 +90,16 @@ public class Registry extends AppCompatActivity {
             sqdb=my_db.getWritableDatabase();
             sqdb.insert(my_db.TABLE_NAME,null,cv);
             sqdb.close();
+            etFirst.setText("");
+            etLast.setText("");
+            etId.setText("");
+            etPass.setText("");
+            etConPass.setText("");
+            etPhone.setText("");
+            etMail.setText("");
         }
 
-        etFirst.setText("");
-        etLast.setText("");
-        etId.setText("");
-        etPass.setText("");
-        etConPass.setText("");
-        etPhone.setText("");
-        etMail.setText("");
+
 
 
     }
