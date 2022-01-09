@@ -4,11 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/btnDate"
     android:layout_width="match_parent"
+    android:background="@drawable/add_baby"
     android:layout_height="match_parent"
     tools:context=".add_child">
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/edDate"
+        android:layout_width="262dp"
+        android:layout_height="57dp"
+        android:ems="10"
+        android:hint="Date Of Birth"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.072" />
+
+    <EditText
+        android:id="@+id/etFullName"
         android:layout_width="262dp"
         android:layout_height="57dp"
         android:ems="10"
@@ -22,7 +36,7 @@
         app:layout_constraintVertical_bias="0.191" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/etHeadDiameter"
         android:layout_width="262dp"
         android:layout_height="57dp"
         android:ems="10"
@@ -36,7 +50,7 @@
         app:layout_constraintVertical_bias="0.59" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/etHeight"
         android:layout_width="262dp"
         android:layout_height="57dp"
         android:ems="10"
@@ -49,20 +63,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.456" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="263dp"
-        android:layout_height="68dp"
-        android:text="Choose Date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.055" />
-
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/etWeight"
         android:layout_width="262dp"
         android:layout_height="57dp"
         android:ems="10"
@@ -91,9 +93,11 @@
         android:layout_width="183dp"
         android:layout_height="57dp"
         android:text="Finish"
+        android:onClick="addChild"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.927" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

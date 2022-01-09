@@ -18,14 +18,28 @@ public class DBHelper extends SQLiteOpenHelper {
     public  static final String EMAIL = "email";
 
 
+    public  static final String TABLE_NAME2 = "children";
+    public  static final String PARENT_ID = "parentID";
+    public  static final String CHILD_NAME = "fullName";
+    public  static final String DATE_OF_BIRTH = "date";
+    public  static final String HEAD_DIAMETER = "headDiameter";
+    public  static final String WEIGHT = "weight";
+    public  static final String HEIGHT = "height";
+    public  static final String DOC_NAME = "docName";
+
     public String SQL_Create="",SQL_Delete="";
+    public String SQL2_Create="",SQL2_Delete="";
+
 
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        //table, contains all the users
         SQL_Create="CREATE TABLE " +TABLE_NAME+" (";
         SQL_Create+=FIRST_NAME+" TEXT, ";
         SQL_Create+=LAST_NAME+" TEXT, ";
@@ -35,12 +49,28 @@ public class DBHelper extends SQLiteOpenHelper {
         SQL_Create+=EMAIL+" TEXT);";
 
         sqLiteDatabase.execSQL(SQL_Create);
+
+        //table 2, contains children(i know it sounds bad but i cant think of how to make it sound good)
+        SQL2_Create = "CREATE TABLE " +TABLE_NAME2+" (";
+        SQL2_Create+=PARENT_ID+" TEXT, ";
+        SQL2_Create+=CHILD_NAME+" TEXT, ";
+        SQL2_Create+=DATE_OF_BIRTH+" TEXT, ";
+        SQL2_Create+=HEAD_DIAMETER+" TEXT, ";
+        SQL2_Create+=WEIGHT+" TEXT, ";
+        SQL2_Create+=HEIGHT+" TEXT, ";
+        SQL2_Create+=DOC_NAME+" TEXT);";
+
+        sqLiteDatabase.execSQL(SQL2_Create);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         SQL_Delete="DROP TABLE IF EXISTS "+TABLE_NAME;
         sqLiteDatabase.execSQL(SQL_Delete);
+
+        SQL2_Delete="DROP TABLE IF EXISTS "+TABLE_NAME2;
+        sqLiteDatabase.execSQL(SQL2_Delete);
 
         onCreate(sqLiteDatabase);
     }

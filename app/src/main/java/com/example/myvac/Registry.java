@@ -1,9 +1,11 @@
 package com.example.myvac;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 public class Registry extends AppCompatActivity {
 
     EditText etFirst, etLast, etId, etPass, etConPass, etPhone,etMail;
+    String errorMessage;
     SQLiteDatabase sqdb;
     DBHelper my_db;
     String[] info = new String[7];
@@ -42,6 +45,7 @@ public class Registry extends AppCompatActivity {
     }
 
     public void tryToRegister(View view) {
+        errorMessage= "";
         info[0] = etFirst.getText().toString();
         info[1] = etLast.getText().toString();
         info[2] = etId.getText().toString();
@@ -64,12 +68,15 @@ public class Registry extends AppCompatActivity {
             if (info[2].equals(s))
             {
                 flag=false;
-                Toast.makeText(this, "User already exists!", Toast.LENGTH_SHORT).show();
+                errorMessage +="User already exists!";
+                errorMessage +="\n";
+
             }
             if (info[3].equals(info[4]))
             {
                 flag=false;
-                Toast.makeText(this, "Passwords does not match!", Toast.LENGTH_SHORT).show();
+                errorMessage +="Passwords does not match!";
+                errorMessage +="\n";
             }
 
             c.moveToNext();
@@ -88,15 +95,34 @@ public class Registry extends AppCompatActivity {
             sqdb=my_db.getWritableDatabase();
             sqdb.insert(my_db.TABLE_NAME,null,cv);
             sqdb.close();
+
+            etFirst.setText("");
+            etLast.setText("");
+            etId.setText("");
+            etPass.setText("");
+            etConPass.setText("");
+            etPhone.setText("");
+            etMail.setText("");
+        }
+        else
+        {
+            AlertDialog.Builder adb;
+            AlertDialog ad;
+            adb= new AlertDialog.Builder(this);
+            adb.setTitle("Error, parameters are wrong");
+            adb.setMessage(errorMessage);
+            adb.setNeutralButton("ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+
+            ad= adb.create();
+            ad.show();
         }
 
-        etFirst.setText("");
-        etLast.setText("");
-        etId.setText("");
-        etPass.setText("");
-        etConPass.setText("");
-        etPhone.setText("");
-        etMail.setText("");
+
 
 
     }

@@ -16,8 +16,9 @@ import java.util.regex.Pattern;
 
 public class Login extends AppCompatActivity {
 
+
     EditText etId, etPassword;
-    String id="", password="";
+    String id="", password="", nameToPass="" , idToPass="";
     SQLiteDatabase sqdb;
     DBHelper my_db;
     Boolean flag = false;
@@ -49,11 +50,10 @@ public class Login extends AppCompatActivity {
         {
             sqdb=my_db.getWritableDatabase();
             Cursor c = sqdb.query(DBHelper.TABLE_NAME,null,null,null,null,null,null);
-            String s1 = c.getString(c.getColumnIndex(DBHelper.FIRST_NAME));
-            String s2 = c.getString(c.getColumnIndex(DBHelper.LAST_NAME));
+
             Intent i = new Intent(this,menu_screen.class);
-            i.putExtra("first_name", s1);
-            i.putExtra("last_name", s2);
+            i.putExtra("full_name", nameToPass);
+            i.putExtra("parent_id", idToPass);
             startActivity(i);
             sqdb.close();
 
@@ -69,7 +69,7 @@ public class Login extends AppCompatActivity {
             adb.setNeutralButton("ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    finish();
+
                 }
             });
 
@@ -87,6 +87,8 @@ public class Login extends AppCompatActivity {
         boolean flag = false;
         int col1 = c.getColumnIndex(DBHelper.ID);
         int col2 = c.getColumnIndex(DBHelper.PASS);
+        int col3 = c.getColumnIndex(DBHelper.FIRST_NAME);
+        int col4 = c.getColumnIndex(DBHelper.LAST_NAME);
 
 
         c.moveToFirst();
@@ -94,9 +96,13 @@ public class Login extends AppCompatActivity {
         {
             String s1 = c.getString(col1);
             String s2 = c.getString(col2);
+            String s3 = c.getString(col3);
+            String s4 = c.getString(col4);
             if (id.equals(s1)&&password.equals(s2))
             {
-                return true;
+                flag =true;
+                nameToPass = s3 + " " +s4;
+                idToPass = s1;
             }
 
             c.moveToNext();
