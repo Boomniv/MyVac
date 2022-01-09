@@ -27,8 +27,15 @@ public class DBHelper extends SQLiteOpenHelper {
     public  static final String HEIGHT = "height";
     public  static final String DOC_NAME = "docName";
 
+    public  static final String TABLE_NAME3 = "doctors";
+    public  static final String DOCTOR_NAME = "doctorName";
+    public  static final String DOCTOR_ID = "docID";
+    public  static final String DOC_PASSWORD = "docPass";
+
+
     public String SQL_Create="",SQL_Delete="";
     public String SQL2_Create="",SQL2_Delete="";
+    public String SQL3_Create="",SQL3_Delete="";
 
 
     public DBHelper(@Nullable Context context) {
@@ -62,6 +69,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(SQL2_Create);
 
+        SQL3_Create = "CREATE TABLE " +TABLE_NAME3+" (";
+        SQL3_Create+=DOCTOR_NAME+" TEXT, ";
+        SQL3_Create+=DOCTOR_ID+" TEXT, ";
+        SQL3_Create+=DOC_PASSWORD+" TEXT);";
+
+        sqLiteDatabase.execSQL(SQL3_Create);
     }
 
     @Override
@@ -71,6 +84,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQL2_Delete="DROP TABLE IF EXISTS "+TABLE_NAME2;
         sqLiteDatabase.execSQL(SQL2_Delete);
+
+        SQL3_Delete="DROP TABLE IF EXISTS "+TABLE_NAME3;
+        sqLiteDatabase.execSQL(SQL3_Delete);
 
         onCreate(sqLiteDatabase);
     }
