@@ -57,7 +57,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(SQL_Create);
 
-        //table 2, contains children(i know it sounds bad but i cant think of how to make it sound good)
+        //table 2, contains children(i know it sounds bad but i cant think of how to make it sound normal)
         SQL2_Create = "CREATE TABLE " +TABLE_NAME2+" (";
         SQL2_Create+=PARENT_ID+" TEXT, ";
         SQL2_Create+=CHILD_NAME+" TEXT, ";

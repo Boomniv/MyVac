@@ -121,4 +121,8 @@ public class Login extends AppCompatActivity {
     }
 
 
+    public void goRecoverPage(View view) {
+        Intent i = new Intent(this,forgot_password.class);
+        startActivity(i);
+    }
 }
