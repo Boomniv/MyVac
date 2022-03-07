@@ -26,16 +26,29 @@ public class DBHelper extends SQLiteOpenHelper {
     public  static final String WEIGHT = "weight";
     public  static final String HEIGHT = "height";
     public  static final String DOC_NAME = "docName";
+    public  static final String CHILD_ID = "childID";
 
     public  static final String TABLE_NAME3 = "doctors";
     public  static final String DOCTOR_NAME = "doctorName";
     public  static final String DOCTOR_ID = "docID";
     public  static final String DOC_PASSWORD = "docPass";
 
+    public  static final String TABLE_NAME4 = "vaccine";
+    public  static final String VAC_CHILD_ID = "ChildID";
+    public  static final String DTW_COUGH= "cough";
+    public  static final String HAEMOPHILUS_INFLUENZAE_TYPE_B= "HITypeB";
+    public  static final String POLIO= "polio";
+    public  static final String GERMAN_MEASLES= "German_measles";
+    public  static final String CHICKEN_POX= "chicken_pox";
+    public  static final String PCV= "pcv";
+    public  static final String HEPATITIS_B= "Hepatitis_B";
+    public  static final String HEPATITIS_A= "Hepatitis_A";
+    public  static final String ROTAVIRUS= "rotavirus";
 
     public String SQL_Create="",SQL_Delete="";
     public String SQL2_Create="",SQL2_Delete="";
     public String SQL3_Create="",SQL3_Delete="";
+    public String SQL4_Create="",SQL34Delete="";
 
 
     public DBHelper(@Nullable Context context) {
@@ -75,6 +88,9 @@ public class DBHelper extends SQLiteOpenHelper {
         SQL3_Create+=DOC_PASSWORD+" TEXT);";
 
         sqLiteDatabase.execSQL(SQL3_Create);
+
+        SQL4_Create = "CREATE TABLE " +TABLE_NAME4+" (";
+        SQL3_Create+=DOCTOR_NAME+" TEXT, ";
     }
 
     @Override
