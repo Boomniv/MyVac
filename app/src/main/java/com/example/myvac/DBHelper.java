@@ -48,7 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public String SQL_Create="",SQL_Delete="";
     public String SQL2_Create="",SQL2_Delete="";
     public String SQL3_Create="",SQL3_Delete="";
-    public String SQL4_Create="",SQL34Delete="";
+    public String SQL4_Create="",SQL4_Delete="";
 
 
     public DBHelper(@Nullable Context context) {
@@ -78,7 +78,8 @@ public class DBHelper extends SQLiteOpenHelper {
         SQL2_Create+=HEAD_DIAMETER+" TEXT, ";
         SQL2_Create+=WEIGHT+" TEXT, ";
         SQL2_Create+=HEIGHT+" TEXT, ";
-        SQL2_Create+=DOC_NAME+" TEXT);";
+        SQL2_Create+=DOC_NAME+" TEXT, ";
+        SQL2_Create+=CHILD_ID+" TEXT);";
 
         sqLiteDatabase.execSQL(SQL2_Create);
 
@@ -90,7 +91,19 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL3_Create);
 
         SQL4_Create = "CREATE TABLE " +TABLE_NAME4+" (";
-        SQL3_Create+=DOCTOR_NAME+" TEXT, ";
+        SQL4_Create+=VAC_CHILD_ID+" TEXT, ";
+        SQL4_Create+=DTW_COUGH+" BIT, ";
+        SQL4_Create+=HAEMOPHILUS_INFLUENZAE_TYPE_B+" BIT, ";
+        SQL4_Create+=POLIO+" BIT, ";
+        SQL4_Create+=GERMAN_MEASLES+" BIT, ";
+        SQL4_Create+=CHICKEN_POX+" BIT, ";
+        SQL4_Create+=PCV+" BIT, ";
+        SQL4_Create+=HEPATITIS_A+" BIT, ";
+        SQL4_Create+=HEPATITIS_B+" BIT, ";
+        SQL4_Create+=ROTAVIRUS+" BIT);";
+
+        sqLiteDatabase.execSQL(SQL4_Create);
+
     }
 
     @Override
@@ -103,6 +116,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQL3_Delete="DROP TABLE IF EXISTS "+TABLE_NAME3;
         sqLiteDatabase.execSQL(SQL3_Delete);
+
+        SQL4_Delete="DROP TABLE IF EXISTS "+TABLE_NAME4;
+        sqLiteDatabase.execSQL(SQL4_Delete);
 
         onCreate(sqLiteDatabase);
     }

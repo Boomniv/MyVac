@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyVac">
         <activity
+            android:name=".Guide"
+            android:exported="false" />
+        <activity
+            android:name=".edit_vaccines"
+            android:exported="false" />
+        <activity
             android:name=".menu_screen_doctor"
             android:exported="true" />
         <activity
