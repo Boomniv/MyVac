@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyVac">
         <activity
+            android:name=".add_doctor"
+            android:exported="false" />
+        <activity
+            android:name=".admin_menu"
+            android:exported="false" />
+        <activity
             android:name=".Guide"
             android:exported="false" />
         <activity
