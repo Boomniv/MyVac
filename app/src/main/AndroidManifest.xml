@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
 
     <application
         android:name=".App"
@@ -13,6 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyVac">
+        <service
+            android:name=".SampleService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
             android:name=".check_vac"
             android:exported="true" />

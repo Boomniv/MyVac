@@ -187,6 +187,8 @@ public class edit_vaccines extends AppCompatActivity {
         builder.setContentText("Vaccine list was updated");
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(edit_vaccines.this);
         managerCompat.notify(1, builder.build());
+        Intent buzz= new Intent(this,SampleService.class);
+        startService(buzz);
         finish();
     }
 }
