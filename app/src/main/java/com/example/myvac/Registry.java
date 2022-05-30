@@ -103,6 +103,8 @@ public class Registry extends AppCompatActivity {
             etConPass.setText("");
             etPhone.setText("");
             etMail.setText("");
+
+            finish();
         }
         else
         {

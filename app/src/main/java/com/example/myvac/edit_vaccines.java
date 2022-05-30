@@ -37,6 +37,7 @@ public class edit_vaccines extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_vaccines);
 
+        my_db = new DBHelper(this);
         Intent intent = getIntent();
         lvDec = findViewById(R.id.lvDec);
         childId = intent.getStringExtra("childId");

@@ -36,6 +36,8 @@ public class menu_screen_doctor extends AppCompatActivity {
         tvFullName = findViewById(R.id.tvFullName);
         tvFullName.setText(full_name);
 
+        my_db = new DBHelper(this);
+
         sqdb=my_db.getWritableDatabase();
         Cursor c = sqdb.query(DBHelper.TABLE_NAME2,null,null,null,null,null,null);
         int col1 = c.getColumnIndex(DBHelper.DOC_NAME);

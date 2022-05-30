@@ -36,6 +36,7 @@ public class check_vac extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_vac);
 
+        my_db = new DBHelper(this);
         Intent intent = getIntent();
         name = intent.getStringExtra("childName");
         tvName = findViewById(R.id.tvFullName);

@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WebView webView;
-        webView = findViewById(R.id.webView);
+
+        WebView webView = findViewById(R.id.webView);
         webView.setBackgroundColor(Color.TRANSPARENT);
         webView.loadDataWithBaseURL("file:///android_res/drawable/","<img align='middle' src='giphy.gif' width='100%'/>","text/html","uft-8",null);
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try{
 
-                    sleep(5000);
+                    sleep(3000);
                     Intent i = new Intent(MainActivity.this,Login.class);
                     startActivity(i);
                 }

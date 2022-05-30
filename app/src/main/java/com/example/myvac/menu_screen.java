@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,6 +33,13 @@ public class menu_screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_screen);
 
+        WebView webView = findViewById(R.id.webViewMenu);
+        webView.setBackgroundColor(Color.TRANSPARENT);
+        webView.loadDataWithBaseURL("file:///android_res/drawable/","<img align='middle' src='background_gif_resize.gif' width='100%'/>","text/html","uft-8",null);
+
+        webView.reload();
+
+
         Intent intent = getIntent();
         String parentName = intent.getStringExtra("full_name");
         parentID= intent.getStringExtra("parent_id");
@@ -40,7 +49,7 @@ public class menu_screen extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinnerChild);
 
 
-
+        my_db = new DBHelper(this);
         sqdb=my_db.getWritableDatabase();
         Cursor c = sqdb.query(DBHelper.TABLE_NAME2,null,null,null,null,null,null);
         int col1 = c.getColumnIndex(DBHelper.PARENT_ID);

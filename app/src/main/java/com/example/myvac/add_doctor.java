@@ -33,6 +33,7 @@ public class add_doctor extends AppCompatActivity {
         cv.put(DBHelper.DOCTOR_NAME,etDocName.getText().toString());
         cv.put(DBHelper.DOCTOR_ID,etDocId.getText().toString());
         cv.put(DBHelper.DOC_PASSWORD,etDocPass.getText().toString());
+        my_db = new DBHelper(this);
         sqdb=my_db.getWritableDatabase();
         sqdb.insert(my_db.TABLE_NAME3,null,cv);
         sqdb.close();
