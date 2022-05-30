@@ -25,7 +25,6 @@ public class check_vac extends AppCompatActivity {
     DBHelper my_db;
     ListView lvDec;
     ArrayList<vacOptions> list2;
-    ContentValues cv = new ContentValues();
     String childId = "";
     String[] vacList = {"DTW COUGH", "HAEMOPHILUS INFLUENZAE TYPE B", "POLIO", "GERMAN MEASLES", "CHICKEN POX","PCV", "HEPATITIS B","HEPATITIS A","ROTAVIRUS"};
 

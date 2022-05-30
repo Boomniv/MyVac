@@ -1,7 +1,11 @@
 package com.example.myvac;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -178,6 +182,11 @@ public class edit_vaccines extends AppCompatActivity {
         cv.put(DBHelper.ROTAVIRUS,updated[8]);
         sqdb.update(DBHelper.TABLE_NAME4, cv, "ChildID = ?", new String[]{childId});
         sqdb.close();
+        NotificationCompat.Builder builder =new  NotificationCompat.Builder(edit_vaccines.this,"channel_1");
+        builder.setContentTitle("Vaccine Editor");
+        builder.setContentText("Vaccine list was updated");
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(edit_vaccines.this);
+        managerCompat.notify(1, builder.build());
         finish();
     }
 }

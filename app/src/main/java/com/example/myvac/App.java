@@ -20,7 +20,7 @@ public class App  extends Application {
         {
             NotificationChannel channel1 = new NotificationChannel(
                     CHANNEL_1_ID,
-                    "channel 1",
+                    "channel_1",
                     NotificationManager.IMPORTANCE_LOW
 
 
