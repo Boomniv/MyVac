@@ -9,6 +9,34 @@
     tools:context=".add_child">
 
     <EditText
+        android:id="@+id/childId"
+        android:layout_width="262dp"
+        android:layout_height="57dp"
+        android:ems="10"
+        android:hint="Child ID"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.716" />
+
+    <EditText
+        android:id="@+id/prID"
+        android:layout_width="262dp"
+        android:layout_height="57dp"
+        android:ems="10"
+        android:hint="Parent ID"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.591" />
+
+    <EditText
         android:id="@+id/edDate"
         android:layout_width="262dp"
         android:layout_height="57dp"
@@ -16,77 +44,66 @@
         android:hint="Date Of Birth"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.072" />
+        app:layout_constraintVertical_bias="0.038" />
 
     <EditText
         android:id="@+id/etFullName"
         android:layout_width="262dp"
         android:layout_height="57dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Full Name"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintVertical_bias="0.14" />
 
     <EditText
         android:id="@+id/etHeadDiameter"
         android:layout_width="262dp"
         android:layout_height="57dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Head Diameter"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.59" />
+        app:layout_constraintVertical_bias="0.476" />
 
     <EditText
         android:id="@+id/etHeight"
         android:layout_width="262dp"
         android:layout_height="57dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Height"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.456" />
+        app:layout_constraintVertical_bias="0.363" />
 
     <EditText
         android:id="@+id/etWeight"
         android:layout_width="262dp"
         android:layout_height="57dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Weight"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.324" />
-
-    <Spinner
-        android:id="@+id/spDocName"
-        android:layout_width="263dp"
-        android:layout_height="57dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.721" />
+        app:layout_constraintVertical_bias="0.252" />
 
     <Button
         android:id="@+id/button4"

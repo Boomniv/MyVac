@@ -8,7 +8,7 @@
     tools:context=".add_doctor">
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/dctrID"
         android:layout_width="231dp"
         android:layout_height="51dp"
         android:ems="10"
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.285" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/dctrName"
         android:layout_width="231dp"
         android:layout_height="51dp"
         android:ems="10"
@@ -34,27 +34,29 @@
         app:layout_constraintVertical_bias="0.17" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/pass1"
         android:layout_width="231dp"
         android:layout_height="51dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint=""
+        android:hint="password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.413" />
 
-    <EditText
-        android:id="@+id/editTextTextPassword2"
-        android:layout_width="231dp"
-        android:layout_height="51dp"
-        android:ems="10"
-        android:inputType="textPassword"
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add"
+        android:onClick="addDoctorNow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintVertical_bias="0.906" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

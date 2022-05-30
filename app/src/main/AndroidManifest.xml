@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyVac">
         <activity
+            android:name=".check_vac"
+            android:exported="true" />
+        <activity
             android:name=".add_doctor"
             android:exported="false" />
         <activity

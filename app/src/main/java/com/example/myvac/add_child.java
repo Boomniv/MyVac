@@ -36,17 +36,17 @@ public class add_child extends AppCompatActivity {
     InputStreamReader isr;
     BufferedReader br;
 
-    String parentID;
+    String  docName;
     final Calendar myCalendar= Calendar.getInstance();
     SQLiteDatabase sqdb;
     DBHelper my_db;
     String errorMessage;
 
-    EditText etDate, etFullName, etHeight, etWeight, etHeadDiameter;
-    Spinner  etDocName;
+    EditText etDate, etFullName, etHeight, etWeight, etHeadDiameter, etParentId, etChildId;
     Boolean flag = true;
-    String[] info = new String[7];
+    String[] info = new String[8];
     ContentValues cv = new ContentValues();
+    ContentValues cv2 = new ContentValues();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,17 +55,18 @@ public class add_child extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        parentID = intent.getStringExtra("parentID");
+        docName = intent.getStringExtra("docName");
         my_db = new DBHelper(this);
         sqdb=my_db.getWritableDatabase();
         sqdb.close();
         //linking
+        etChildId = findViewById(R.id.childId);
         etDate=(EditText) findViewById(R.id.edDate);
         etFullName = findViewById(R.id.etFullName);
         etHeight = findViewById(R.id.etHeight);
         etWeight = findViewById(R.id.etWeight);
         etHeadDiameter = findViewById(R.id.etHeadDiameter);
-        etDocName = findViewById(R.id.spDocName);
+        etParentId = findViewById(R.id.prID);
 
 
 
@@ -86,12 +87,6 @@ public class add_child extends AppCompatActivity {
             }
         });
 
-        allDoctors = new ArrayList<>();
-        allDoctors.add("choose doctor");
-        goReadFromFile();
-        adapDoc =new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,allDoctors);
-        etDocName.setAdapter(adapDoc);
-
 
     }
 
@@ -102,13 +97,15 @@ public class add_child extends AppCompatActivity {
     }
 
     public void addChild(View view) {
-        info[0] = parentID;
+        info[0] = etParentId.getText().toString();
         info[1] = etFullName.getText().toString();
         info[2] = etDate.getText().toString();
         info[3] = etHeadDiameter.getText().toString();
         info[4] = etWeight.getText().toString();
         info[5] = etHeight.getText().toString();
-        info[6] = etDocName.getSelectedItem().toString();
+        info[6] = docName;
+        info[7] = etChildId.getText().toString();
+
 
 
 
@@ -147,9 +144,24 @@ public class add_child extends AppCompatActivity {
             cv.put(my_db.WEIGHT,info[4]);
             cv.put(my_db.HEIGHT,info[5]);
             cv.put(my_db.DOC_NAME,info[6]);
+            cv.put(my_db.CHILD_ID,info[7]);
+
+            cv2.put(DBHelper.DTW_COUGH,"false");
+            cv2.put(DBHelper.HAEMOPHILUS_INFLUENZAE_TYPE_B,"false");
+            cv2.put(DBHelper.POLIO,"false");
+            cv2.put(DBHelper.GERMAN_MEASLES,"false");
+            cv2.put(DBHelper.CHICKEN_POX,"false");
+            cv2.put(DBHelper.PCV,"false");
+            cv2.put(DBHelper.HEPATITIS_B,"false");
+            cv2.put(DBHelper.HEPATITIS_B,"false");
+            cv2.put(DBHelper.ROTAVIRUS,"false");
             sqdb=my_db.getWritableDatabase();
             sqdb.insert(my_db.TABLE_NAME2,null,cv);
+            sqdb.insert(my_db.TABLE_NAME4,null,cv2);
             sqdb.close();
+
+
+
 
             etFullName.setText("");
             etDate.setText("");

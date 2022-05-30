@@ -46,7 +46,19 @@ public class Login extends AppCompatActivity {
     public void tryToLogin(View view) {
         id = etId.getText().toString();
         password = etPassword.getText().toString();
-        if(checkUser())
+        if(checkAdmin())
+        {
+            Intent i = new Intent(this,admin_menu.class);
+            startActivity(i);
+        }
+        else if(checkDoctor())
+        {
+            Intent i = new Intent(this,menu_screen_doctor.class);
+            i.putExtra("full_name", nameToPass);
+            startActivity(i);
+
+        }
+        else if(checkUser())
         {
             sqdb=my_db.getWritableDatabase();
             Cursor c = sqdb.query(DBHelper.TABLE_NAME,null,null,null,null,null,null);
@@ -79,6 +91,39 @@ public class Login extends AppCompatActivity {
         }
 
     }
+
+    private boolean checkDoctor() {
+        sqdb=my_db.getWritableDatabase();
+        Cursor c = sqdb.query(DBHelper.TABLE_NAME3,null,null,null,null,null,null);
+        boolean flag = false;
+        int col1 = c.getColumnIndex(DBHelper.DOCTOR_ID);
+        int col2 = c.getColumnIndex(DBHelper.DOC_PASSWORD);
+        int col3 = c.getColumnIndex(DBHelper.DOCTOR_NAME);
+        c.moveToFirst();
+        while(!c.isAfterLast()) {
+            String s1 = c.getString(col1);
+            String s2 = c.getString(col2);
+            String s3 = c.getString(col3);
+            if (id.equals(s1) && password.equals(s2)) {
+                flag = true;
+                nameToPass = s3;
+                idToPass = s1;
+            }
+            c.moveToNext();
+        }
+        sqdb.close();
+        return flag;
+    }
+
+    private boolean checkAdmin()
+    {
+        if (id.equals("326047784")&& password.equals("hiitsme"))
+        {
+            return true;
+        }
+        return false;
+    }
+
 
     private boolean checkUser() {
 
