@@ -21,7 +21,7 @@ public class Login extends AppCompatActivity {
     String id="", password="", nameToPass="" , idToPass="";
     SQLiteDatabase sqdb;
     DBHelper my_db;
-    Boolean flag = false;
+
 
     private static final Pattern NAME_PATTERN =
             Pattern.compile("^" +

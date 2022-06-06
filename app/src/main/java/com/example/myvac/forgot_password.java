@@ -24,8 +24,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class forgot_password extends AppCompatActivity {
     private static final int PERMISSION_REQUEST = 100;
 
-    String phone ="";
-    String password = "";
+    String phone ="",password = "";
     EditText ID;
     SQLiteDatabase sqdb;
     DBHelper my_db;

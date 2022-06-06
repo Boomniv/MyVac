@@ -18,14 +18,13 @@ import java.util.ArrayList;
 
 public class check_vac extends AppCompatActivity {
 
-    String name;
+    String name,childId = "";
     TextView tvName;
     OptionsAdapter adapter;
     SQLiteDatabase sqdb;
     DBHelper my_db;
     ListView lvDec;
     ArrayList<vacOptions> list2;
-    String childId = "";
     String[] vacList = {"DTW COUGH", "HAEMOPHILUS INFLUENZAE TYPE B", "POLIO", "GERMAN MEASLES", "CHICKEN POX","PCV", "HEPATITIS B","HEPATITIS A","ROTAVIRUS"};
 
     int [] imageVacList = new int[vacList.length];

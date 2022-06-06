@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/btnDate"
     android:layout_width="match_parent"
-    android:background="@drawable/add_baby"
+    android:background="@drawable/welcome_to_my_vac"
     android:layout_height="match_parent"
     tools:context=".add_child">
 

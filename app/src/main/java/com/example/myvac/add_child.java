@@ -30,12 +30,6 @@ import java.util.Calendar;
 
 public class add_child extends AppCompatActivity {
 
-    ArrayList<String> allDoctors;
-    ArrayAdapter<String> adapDoc;
-    InputStream is;
-    InputStreamReader isr;
-    BufferedReader br;
-
     String  docName;
     final Calendar myCalendar= Calendar.getInstance();
     SQLiteDatabase sqdb;
@@ -189,24 +183,7 @@ public class add_child extends AppCompatActivity {
 
 
     }
-    private void goReadFromFile() {
-        is= this.getResources().openRawResource(R.raw.doctors);
-        isr= new InputStreamReader(is);
-        br = new BufferedReader(isr);
-        String temp = "";
-        try {
-            while((temp=br.readLine())!=null)
-            {
-                allDoctors.add(temp);
-            }
-            is.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
 
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);

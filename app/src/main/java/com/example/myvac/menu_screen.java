@@ -33,11 +33,6 @@ public class menu_screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_screen);
 
-        WebView webView = findViewById(R.id.webViewMenu);
-        webView.setBackgroundColor(Color.TRANSPARENT);
-        webView.loadDataWithBaseURL("file:///android_res/drawable/","<img align='middle' src='background_gif_resize.gif' width='100%'/>","text/html","uft-8",null);
-
-        webView.reload();
 
 
         Intent intent = getIntent();

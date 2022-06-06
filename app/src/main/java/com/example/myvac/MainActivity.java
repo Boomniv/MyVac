@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         WebView webView = findViewById(R.id.webView);
         webView.setBackgroundColor(Color.TRANSPARENT);
-        webView.loadDataWithBaseURL("file:///android_res/drawable/","<img align='middle' src='giphy.gif' width='100%'/>","text/html","uft-8",null);
+        webView.loadDataWithBaseURL("file:///android_res/drawable/","<img align='middle' src='welcome_to_my_vac_animation.gif' width='100%'/>","text/html","uft-8",null);
 
         webView.reload();
 
