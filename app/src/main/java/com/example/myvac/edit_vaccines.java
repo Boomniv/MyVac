@@ -1,6 +1,7 @@
 package com.example.myvac;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -53,6 +55,8 @@ public class edit_vaccines extends AppCompatActivity {
             imageVacList[i] = R.drawable.empty_vac;
             updated[i] = "false";
         }
+
+
 
         sqdb=my_db.getWritableDatabase();
         Cursor c = sqdb.query(DBHelper.TABLE_NAME4,null,null,null,null,null,null);
@@ -151,7 +155,18 @@ public class edit_vaccines extends AppCompatActivity {
         list2 = new ArrayList<>();
         for(int i =0; i < vacList.length; i++)
             list2.add(new vacOptions(vacList[i],imageVacList[i]));
-        adapter = new OptionsAdapter(this,R.layout.my_list,this.list2);
+        adapter = new OptionsAdapter(this, R.layout.my_list,list2){
+            @Override
+            public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                if (arr[position]%2!=0) {
+                    view.setBackgroundColor(Color.parseColor("#FF76FF00"));
+                } else if (arr[position]%2== 0) {
+                    view.setBackgroundColor(Color.TRANSPARENT);
+                }
+                return view;
+            }
+        };
         this.lvDec.setAdapter(adapter);
         lvDec.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
