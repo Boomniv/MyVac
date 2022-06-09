@@ -9,10 +9,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,7 @@ public class check_vac extends AppCompatActivity {
     ListView lvDec;
     ArrayList<vacOptions> list2;
     String[] vacList = {"DTW COUGH", "HAEMOPHILUS INFLUENZAE TYPE B", "POLIO", "GERMAN MEASLES", "CHICKEN POX","PCV", "HEPATITIS B","HEPATITIS A","ROTAVIRUS"};
+    String[] addColor = new String[vacList.length];
 
     int [] imageVacList = new int[vacList.length];
 
@@ -38,13 +41,15 @@ public class check_vac extends AppCompatActivity {
         my_db = new DBHelper(this);
         Intent intent = getIntent();
         name = intent.getStringExtra("childName");
-        tvName = findViewById(R.id.tvFullName);
+        tvName = findViewById(R.id.child_name);
         tvName.setText(name);
         lvDec = findViewById(R.id.lvcheck);
         childId = intent.getStringExtra("childId");
+        Log.println(Log.DEBUG,"debug", childId);
         for(int i = 0; i< vacList.length;i++)
         {
             imageVacList[i] = R.drawable.empty_vac;
+            addColor[i] = "false";
         }
 
         sqdb=my_db.getWritableDatabase();
@@ -75,57 +80,57 @@ public class check_vac extends AppCompatActivity {
                 if (s2.equals("true"))
                 {
                     imageVacList[0] = R.drawable.green_vac;
+                    addColor[0] = "true";
 
-                    lvDec.getChildAt(0).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
 
                 if (s3.equals("true"))
                 {
                     imageVacList[1] = R.drawable.green_vac;
+                    addColor[1] = "true";
 
-                    lvDec.getChildAt(1).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s4.equals("true"))
                 {
                     imageVacList[2] = R.drawable.green_vac;
+                    addColor[2] = "true";
 
-                    lvDec.getChildAt(2).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s5.equals("true"))
                 {
                     imageVacList[3] = R.drawable.green_vac;
+                    addColor[3] = "true";
 
-                    lvDec.getChildAt(3).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s6.equals("true"))
                 {
                     imageVacList[4] = R.drawable.green_vac;
+                    addColor[4] = "true";
 
-                    lvDec.getChildAt(4).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s7.equals("true"))
                 {
                     imageVacList[5] = R.drawable.green_vac;
+                    addColor[5] = "true";
 
-                    lvDec.getChildAt(5).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s8.equals("true"))
                 {
                     imageVacList[6] = R.drawable.green_vac;
+                    addColor[6] = "true";
 
-                    lvDec.getChildAt(6).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s9.equals("true"))
                 {
                     imageVacList[7] = R.drawable.green_vac;
+                    addColor[7] = "true";
 
-                    lvDec.getChildAt(7).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s10.equals("true"))
                 {
                     imageVacList[8] = R.drawable.green_vac;
+                    addColor[8] = "true";
 
-                    lvDec.getChildAt(8).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
 
             }
@@ -137,6 +142,15 @@ public class check_vac extends AppCompatActivity {
             list2.add(new vacOptions(vacList[i],imageVacList[i]));
         adapter = new OptionsAdapter(this,R.layout.my_list,this.list2);
         this.lvDec.setAdapter(adapter);
+        /*
+        for(int i = 0; i< addColor.length;i++)
+        {
+            if(addColor[i]=="true")
+            {
+                lvDec.getChildAt(i).setBackgroundColor(Color.parseColor("#FF76FF00"));
+            }
+        }
+*/
     }
 
 
@@ -152,6 +166,16 @@ public class check_vac extends AppCompatActivity {
         if (itemID==R.id.back)
         {
             finish();
+        }
+        if (itemID==R.id.guide)
+        {
+            Intent i = new Intent(this,Guide.class);
+            startActivity(i);
+        }
+        if (itemID==R.id.credits)
+        {
+            Intent i = new Intent(this,Credits.class);
+            startActivity(i);
         }
         return super.onOptionsItemSelected(item);
     }

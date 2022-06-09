@@ -20,4 +20,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.035" />
+
+    <TextView
+        android:id="@+id/txtRawResource"
+        android:layout_width="350dp"
+        android:layout_height="610dp"
+        android:text="Credits for creating the app are reserved to Niv Burlak.
+In addition, Huge thanks to Victoria Shamagov for helping throughout the creation of the project"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.619" />
 </androidx.constraintlayout.widget.ConstraintLayout>

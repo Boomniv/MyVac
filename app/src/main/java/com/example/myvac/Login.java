@@ -1,5 +1,6 @@
 package com.example.myvac;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +9,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,12 +26,7 @@ public class Login extends AppCompatActivity {
     DBHelper my_db;
 
 
-    private static final Pattern NAME_PATTERN =
-            Pattern.compile("^" +
-                    "(?=.*[a-zA-Z])" +      //any letter
-                    "(?=\\S+$)" +           //no white spaces
-                    ".{2,}" +               //at least 4 characters
-                    "$");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,5 +167,29 @@ public class Login extends AppCompatActivity {
     public void goRecoverPage(View view) {
         Intent i = new Intent(this,forgot_password.class);
         startActivity(i);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        MenuItem item = menu.findItem(R.id.back);
+        item.setVisible(false);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemID=item.getItemId();
+
+
+        if (itemID==R.id.guide)
+        {
+            Intent i = new Intent(this,Guide.class);
+            startActivity(i);
+        }
+        if (itemID==R.id.credits)
+        {
+            Intent i = new Intent(this,Credits.class);
+            startActivity(i);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

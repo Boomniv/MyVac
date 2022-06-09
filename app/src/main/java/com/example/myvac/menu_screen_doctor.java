@@ -41,11 +41,14 @@ public class menu_screen_doctor extends AppCompatActivity {
         sqdb=my_db.getWritableDatabase();
         Cursor c = sqdb.query(DBHelper.TABLE_NAME2,null,null,null,null,null,null);
         int col1 = c.getColumnIndex(DBHelper.DOC_NAME);
+        int col2 = c.getColumnIndex(DBHelper.CHILD_NAME);
+
         c.moveToFirst();
         while(!c.isAfterLast()) {
             String s1 = c.getString(col1);
+            String s2 = c.getString(col2);
             if (docName.equals(s1)) {
-                children.add(s1);
+                children.add(s2);
             }
             c.moveToNext();
         }

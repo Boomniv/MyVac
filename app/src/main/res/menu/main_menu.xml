@@ -7,4 +7,14 @@
         android:orderInCategory="100"
         app:showAsAction="never"
         />
+    <item android:title="Guide"
+        android:id="@+id/guide"
+        android:orderInCategory="200"
+        app:showAsAction="never"
+        />
+    <item android:title="Credits"
+        android:id="@+id/credits"
+        android:orderInCategory="300"
+        app:showAsAction="never"
+        />
 </menu>

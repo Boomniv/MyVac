@@ -197,6 +197,16 @@ public class add_child extends AppCompatActivity {
         {
             finish();
         }
+        if (itemID==R.id.guide)
+        {
+            Intent i = new Intent(this,Guide.class);
+            startActivity(i);
+        }
+        if (itemID==R.id.credits)
+        {
+            Intent i = new Intent(this,Credits.class);
+            startActivity(i);
+        }
         return super.onOptionsItemSelected(item);
     }
 }

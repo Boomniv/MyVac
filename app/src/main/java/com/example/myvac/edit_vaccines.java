@@ -1,5 +1,6 @@
 package com.example.myvac;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -12,6 +13,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -81,7 +84,7 @@ public class edit_vaccines extends AppCompatActivity {
                     imageVacList[0] = R.drawable.green_vac;
                     arr[0]++;
                     updated[0] = "true";
-                    lvDec.getChildAt(0).setBackgroundColor(Color.parseColor("#FF76FF00"));
+                    //lvDec.getChildAt(0).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
 
                 if (s3.equals("true"))
@@ -89,56 +92,56 @@ public class edit_vaccines extends AppCompatActivity {
                     imageVacList[1] = R.drawable.green_vac;
                     arr[1]++;
                     updated[1] = "true";
-                    lvDec.getChildAt(1).setBackgroundColor(Color.parseColor("#FF76FF00"));
+                    //lvDec.getChildAt(1).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s4.equals("true"))
                 {
                     imageVacList[2] = R.drawable.green_vac;
                     arr[2]++;
                     updated[2] = "true";
-                    lvDec.getChildAt(2).setBackgroundColor(Color.parseColor("#FF76FF00"));
+                    //lvDec.getChildAt(2).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s5.equals("true"))
                 {
                     imageVacList[3] = R.drawable.green_vac;
                     arr[3]++;
                     updated[3] = "true";
-                    lvDec.getChildAt(3).setBackgroundColor(Color.parseColor("#FF76FF00"));
+                    //lvDec.getChildAt(3).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s6.equals("true"))
                 {
                     imageVacList[4] = R.drawable.green_vac;
                     arr[4]++;
                     updated[4] = "true";
-                    lvDec.getChildAt(4).setBackgroundColor(Color.parseColor("#FF76FF00"));
+                    //lvDec.getChildAt(4).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s7.equals("true"))
                 {
                     imageVacList[5] = R.drawable.green_vac;
                     arr[5]++;
                     updated[5] = "true";
-                    lvDec.getChildAt(5).setBackgroundColor(Color.parseColor("#FF76FF00"));
+                    //lvDec.getChildAt(5).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s8.equals("true"))
                 {
                     imageVacList[6] = R.drawable.green_vac;
                     arr[6]++;
                     updated[6] = "true";
-                    lvDec.getChildAt(6).setBackgroundColor(Color.parseColor("#FF76FF00"));
+                    //lvDec.getChildAt(6).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s9.equals("true"))
                 {
                     imageVacList[7] = R.drawable.green_vac;
                     arr[7]++;
                     updated[7] = "true";
-                    lvDec.getChildAt(7).setBackgroundColor(Color.parseColor("#FF76FF00"));
+                    //lvDec.getChildAt(7).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
                 if (s10.equals("true"))
                 {
                     imageVacList[8] = R.drawable.green_vac;
                     arr[8]++;
                     updated[8] = "true";
-                    lvDec.getChildAt(8).setBackgroundColor(Color.parseColor("#FF76FF00"));
+                    //lvDec.getChildAt(8).setBackgroundColor(Color.parseColor("#FF76FF00"));
                 }
 
             }
@@ -186,10 +189,36 @@ public class edit_vaccines extends AppCompatActivity {
         NotificationCompat.Builder builder =new  NotificationCompat.Builder(edit_vaccines.this,"channel_1");
         builder.setContentTitle("Vaccine Editor");
         builder.setContentText("Vaccine list was updated");
+        builder.setSmallIcon(R.drawable.my_vac_logo);
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(edit_vaccines.this);
         managerCompat.notify(1, builder.build());
         Intent buzz= new Intent(this,SampleService.class);
         startService(buzz);
         finish();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemID=item.getItemId();
+
+        if (itemID==R.id.back)
+        {
+            finish();
+        }
+        if (itemID==R.id.guide)
+        {
+            Intent i = new Intent(this,Guide.class);
+            startActivity(i);
+        }
+        if (itemID==R.id.credits)
+        {
+            Intent i = new Intent(this,Credits.class);
+            startActivity(i);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

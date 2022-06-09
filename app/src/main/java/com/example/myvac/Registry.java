@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -61,26 +62,55 @@ public class Registry extends AppCompatActivity {
         int col = c.getColumnIndex(DBHelper.ID);
 
         c.moveToFirst();
-        while(!c.isAfterLast()&&flag)
+        if(info[2].length()==9 && info[2].matches("[0-9]+")) {
+            if(info[3].length()>5) {
+                if(info[6]!= null && android.util.Patterns.EMAIL_ADDRESS.matcher(info[6]).matches()) {
+                    if(!isValidTel(info[5])) {
+                        while (!c.isAfterLast() && flag) {
+                            String s = c.getString(col);
+
+                            if (info[2].equals(s)) {
+                                flag = false;
+                                errorMessage += "User already exists!";
+                                errorMessage += "\n";
+
+                            }
+                            if (info[3].equals(info[4])) {
+                                flag = false;
+                                errorMessage += "Passwords does not match!";
+                                errorMessage += "\n";
+                            }
+
+                            c.moveToNext();
+
+                        }
+                    }
+                    else
+                    {
+                        flag = false;
+                        errorMessage += "Invalid tel";
+                        errorMessage += "\n";
+                    }
+                }
+                else
+                {
+                    flag = false;
+                    errorMessage += "Invalid mail";
+                    errorMessage += "\n";
+                }
+            }
+            else
+            {
+                flag = false;
+                errorMessage += "Invalid password";
+                errorMessage += "\n";
+            }
+        }
+        else
         {
-            String s = c.getString(col);
-
-            if (info[2].equals(s))
-            {
-                flag=false;
-                errorMessage +="User already exists!";
-                errorMessage +="\n";
-
-            }
-            if (info[3].equals(info[4]))
-            {
-                flag=false;
-                errorMessage +="Passwords does not match!";
-                errorMessage +="\n";
-            }
-
-            c.moveToNext();
-
+            flag = false;
+            errorMessage += "Invalid id";
+            errorMessage += "\n";
         }
         sqdb.close();
 
@@ -141,6 +171,41 @@ public class Registry extends AppCompatActivity {
         {
             finish();
         }
+        if (itemID==R.id.guide)
+        {
+            Intent i = new Intent(this,Guide.class);
+            startActivity(i);
+        }
+        if (itemID==R.id.credits)
+        {
+            Intent i = new Intent(this,Credits.class);
+            startActivity(i);
+        }
         return super.onOptionsItemSelected(item);
+    }
+    public boolean isValidTel(String target) {
+        String toCheck = target.substring(1);
+        if(target.startsWith("+972"))
+        {
+            if (toCheck.matches("[0-9]+") && target.length() == 13) {
+                return false;
+            }
+            return true;
+        }
+        else
+        {
+            if (target.startsWith("0"))
+            {
+                if (target.matches("[0-9]+") && (target.length() == 10 || target.length() == 9)) {
+                    return false;
+                }
+                return true;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
 }
