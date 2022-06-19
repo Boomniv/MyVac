@@ -1,12 +1,21 @@
 package com.example.myvac;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import java.net.Inet4Address;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         t.start();
+
 
 
 

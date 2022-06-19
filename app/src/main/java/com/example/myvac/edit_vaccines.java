@@ -7,12 +7,16 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -201,12 +205,28 @@ public class edit_vaccines extends AppCompatActivity {
         cv.put(DBHelper.ROTAVIRUS,updated[8]);
         sqdb.update(DBHelper.TABLE_NAME4, cv, "ChildID = ?", new String[]{childId});
         sqdb.close();
-        NotificationCompat.Builder builder =new  NotificationCompat.Builder(edit_vaccines.this,"channel_1");
+        NotificationCompat.Builder builder =new  NotificationCompat.Builder(this.getApplicationContext(),"channel_1");
+        Intent ii = new Intent(this.getApplicationContext(),MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,ii,0);
         builder.setContentTitle("Vaccine Editor");
         builder.setContentText("Vaccine list was updated");
         builder.setSmallIcon(R.drawable.my_vac_logo);
-        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(edit_vaccines.this);
-        managerCompat.notify(1, builder.build());
+        NotificationManager mNotificationManager = (NotificationManager)this.getSystemService(Context.NOTIFICATION_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            NotificationChannel channel1 = new NotificationChannel(
+                    "channel_1",
+                    "Vaccine List Updated",
+                    NotificationManager.IMPORTANCE_HIGH
+
+
+            );
+            channel1.setDescription("The vaccine list of the patient was updated succesfully!");
+            mNotificationManager.createNotificationChannel(channel1);
+            builder.setChannelId("channel_1");
+        }
+
+        mNotificationManager.notify(0, builder.build());
         Intent buzz= new Intent(this,SampleService.class);
         startService(buzz);
         finish();
