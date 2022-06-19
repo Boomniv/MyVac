@@ -181,6 +181,7 @@ public class Registry extends AppCompatActivity {
             Intent i = new Intent(this,Credits.class);
             startActivity(i);
         }
+
         return super.onOptionsItemSelected(item);
     }
     public boolean isValidTel(String target) {

@@ -106,8 +106,27 @@ public class forgot_password extends AppCompatActivity {
             sendSMS();
         }
     }
+    public void receive()
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) {
+                if (shouldShowRequestPermissionRationale(Manifest.permission.RECEIVE_SMS)) {
+                    Snackbar.make(findViewById(R.id.rl), "You need to grant receive SMS permission to receive sms",
+                            Snackbar.LENGTH_LONG).setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            requestPermissions(new String[]{Manifest.permission.RECEIVE_SMS}, PERMISSION_REQUEST);
+                        }
+                    }).show();
+                } else {
+                    requestPermissions(new String[]{Manifest.permission.RECEIVE_SMS}, PERMISSION_REQUEST);
+                }
+            }
+        }
+    }
 
     private void sendSMS() {
+        receive();
         SmsManager sms = SmsManager.getDefault();
         sms.sendTextMessage(phone, null, "your password: " + password, null, null);
         finish();
